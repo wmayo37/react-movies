@@ -24,9 +24,25 @@ function Home() {
     loadPopularMovies();
   }, []);
 
-  const handleSearch = (event) => {
+  const handleSearch = async (event) => {
     event.preventDefault();
-    alert(searchQuery);
+    if (!searchQuery.trim()) {
+      return;
+    }
+    if (loading) {
+      return;
+    }
+    setLoading(true);
+    try {
+      const searchResults = await searchMovies(searchQuery);
+      setMovies(searchResults);
+      setError(null);
+    } catch (err) {
+      console.log(err);
+      setError("Failed to search movies...");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
