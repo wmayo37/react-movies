@@ -10,12 +10,9 @@ function Favorite() {
       <div className="favorites">
         <h2>Your Favorites</h2>
         <div className="movies-grid">
-          {favorites.map(
-            (movie) =>
-              movie.title.toLowerCase().startsWith(searchQuery) && (
-                <MovieCard movie={movie} key={movie.id}></MovieCard>
-              )
-          )}
+          {favorites.map((movie) => (
+            <MovieCard movie={movie} key={movie.id}></MovieCard>
+          ))}
         </div>
       </div>
     );

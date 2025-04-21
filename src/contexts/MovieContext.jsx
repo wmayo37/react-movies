@@ -2,7 +2,7 @@ import { createContext, useState, useContext, useEffect } from "react";
 
 const MovieContext = createContext();
 
-export const useMovieContext = () => useContext();
+export const useMovieContext = () => useContext(MovieContext);
 
 export const MovieProvider = ({ children }) => {
   //provides global states (wraps entire app)
@@ -42,3 +42,5 @@ export const MovieProvider = ({ children }) => {
     <MovieContext.Provider value={value}>{children}</MovieContext.Provider>
   );
 };
+
+export default MovieContext;
